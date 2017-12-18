@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35F738EA-ED19-4369-9AB7-98366FBBC5F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F9AF21A-89C1-4D62-B401-E25CCC9613B4}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meraki.Dashboard.Console", "src\Meraki.Dashboard.Console\Meraki.Dashboard.Console.csproj", "{98E578E8-690A-4ABD-B6F1-CD502730B51C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{762B4B61-13A8-46C9-9C35-674352DDBEF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meraki.Dashboard.Test", "test\Meraki.Dashboard.Test\Meraki.Dashboard.Test.csproj", "{21002C40-90B1-42AB-B852-C5482C279ACC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meraki.Dashboard", "src\Meraki.Dashboard\Meraki.Dashboard.csproj", "{BE12199D-4333-492C-BC29-2C03EBD1C15B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98E578E8-690A-4ABD-B6F1-CD502730B51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E578E8-690A-4ABD-B6F1-CD502730B51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E578E8-690A-4ABD-B6F1-CD502730B51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E578E8-690A-4ABD-B6F1-CD502730B51C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21002C40-90B1-42AB-B852-C5482C279ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21002C40-90B1-42AB-B852-C5482C279ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21002C40-90B1-42AB-B852-C5482C279ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21002C40-90B1-42AB-B852-C5482C279ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE12199D-4333-492C-BC29-2C03EBD1C15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE12199D-4333-492C-BC29-2C03EBD1C15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE12199D-4333-492C-BC29-2C03EBD1C15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE12199D-4333-492C-BC29-2C03EBD1C15B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{98E578E8-690A-4ABD-B6F1-CD502730B51C} = {35F738EA-ED19-4369-9AB7-98366FBBC5F0}
+		{21002C40-90B1-42AB-B852-C5482C279ACC} = {762B4B61-13A8-46C9-9C35-674352DDBEF0}
+		{BE12199D-4333-492C-BC29-2C03EBD1C15B} = {35F738EA-ED19-4369-9AB7-98366FBBC5F0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5AFB5B4-BFAA-4645-AB7A-815DF4FCD46E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Meraki.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "lab -k 9d9779ab51e73701c7d1e7c5ddd70a3381dcefad"
+    }
+  }
+}
