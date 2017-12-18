@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/jftj7e1s06i935cl?svg=true)](https://ci.appveyor.com/project/anthonylangsworth/meraki-dashboard)
+[![Build status](https://ci.appveyor.com/api/projects/status/oehy76art96ex6sp?svg=true)](https://ci.appveyor.com/project/anthonylangsworth/meraki-dashboard-r15c8)
 [![NuGet Badge](https://buildstats.info/nuget/Meraki.Dashboard)](https://www.nuget.org/packages/Meraki.Dashboard/)
 
 # Meraki Dashboard API .Net Standard Client
