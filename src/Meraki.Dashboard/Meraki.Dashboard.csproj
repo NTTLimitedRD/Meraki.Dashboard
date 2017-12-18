@@ -9,11 +9,11 @@
     <Company>Dimension Data</Company>
     <Product />
     <Copyright>Copyright (c) 2017 Dimension Data, Copyright (c) 2016 Michael Park (initial version)</Copyright>
-    <PackageLicenseUrl>https://github.com/anthonylangsworth/Meraki.Dashboard/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/anthonylangsworth/Meraki.Dashboard</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/anthonylangsworth/Meraki.Dashboard</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/DimensionDataCBUSydney/Meraki.Dashboard/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/DimensionDataCBUSydney/Meraki.Dashboard</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DimensionDataCBUSydney/Meraki.Dashboard</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>meraki cisco dashboard api network client</PackageTags>
+    <PackageTags>cisco-meraki meraki-dashboard cisco-meraki-ap dotnet dotnetcore dotnetstandard dotnet-core dotnet-standard</PackageTags>
     <Description>A library that wraps the Cisco Meraki Dashboard API, providing a mockable, strongly-typed interface.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
