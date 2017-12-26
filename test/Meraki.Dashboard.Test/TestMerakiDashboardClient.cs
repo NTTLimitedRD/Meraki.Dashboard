@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -98,6 +100,19 @@ namespace Meraki.Dashboard.Test
         public void Ctor_IOptions_Null_Settings()
         {
             Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient(new MerakiDashboardClientSettingsOptions()));
+        }
+
+        [Fact]
+        public void VirtualMethods()
+        {
+            Type merakiDashboardClientType = typeof(MerakiDashboardClient);
+            string[] excludedMethods = { "GetType" };
+
+            // Find amy non-virtual public methods. This makes mocking difficult or impossible.
+            Assert.Empty(merakiDashboardClientType
+                .GetMethods()
+                .Where(method => !excludedMethods.Contains(method.Name) && !method.IsVirtual)
+                .Select(method => method.Name));
         }
 
         [Fact]
