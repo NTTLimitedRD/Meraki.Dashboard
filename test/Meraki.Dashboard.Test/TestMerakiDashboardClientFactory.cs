@@ -12,7 +12,7 @@ namespace Meraki.Dashboard.Test
 
             using (MerakiDashboardClient merakiDashboardClient = MerakiDashboardClientFactory.Create(apiKey))
             {
-                Assert.Equal(MerakiDashboardClientSettingsSetup.DefaultMerakiDashboardApiBaseAddress, merakiDashboardClient.Client.BaseAddress.AbsoluteUri);
+                Assert.Equal(MerakiDashboardClientOptions.DefaultMerakiDashboardApiBaseAddress, merakiDashboardClient.Client.BaseAddress);
                 Assert.Equal(apiKey, merakiDashboardClient.Client.ApiKey);
             }
         }

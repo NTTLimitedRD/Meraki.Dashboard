@@ -32,7 +32,7 @@ namespace Meraki.Dashboard
         /// <paramref name="apiKey"/> cannot be null, empty or whitespace.
         /// </exception>
         public MerakiHttpApiClient(string apiKey)
-            : this(apiKey, new Uri(MerakiDashboardClientSettingsSetup.DefaultMerakiDashboardApiBaseAddress, UriKind.Absolute))
+            : this(apiKey, MerakiDashboardClientOptions.DefaultMerakiDashboardApiBaseAddress)
         {
             // Do nothing
         }

@@ -49,8 +49,8 @@ using (MerakiDashboardClient merakiDashboardClient = MerakiDashboardClientFactor
 }
 ```
 
-`MerakiDashboardClientFactory.Create` also accepts an `IOption<MerakiClientSettings>` overload when 
-loading settings from app.config or similar.
+`MerakiDashboardClientFactory.Create` also accepts an `IOption<MerakiClientOptions>` overload when 
+loading settings from an appSettings.json file as shown in [TestOption.cs](test/Meraki.Dashboard.Test/TestOptions.cs).
 
 If Meraki introduces a new Dashboard API where there is no support in the library, use the `Client` 
 property to get access to the underlying `MerakiHttpApiClient` object that a `MerakiDashboardClient`
@@ -180,8 +180,8 @@ The [Meraki Dashboard APIs](https://dashboard.meraki.com/api_docs) with at least
 ## Mocking
 
 As stated above, one of the main goals for providing a client library is 
-mocking it when unit testing the calling code. The `TestMerakiDashboardClientMocking.cs`
-file in `Meraki.Dashboard.Test` provides examples of this.
+mocking it when unit testing the calling code as shown in 
+[TestMerakiDashboardClientMocking.cs](test/Meraki.Dashboard.Test/TestMerakiDashboardClientMocking.cs).
 
 ## Exercise
 
