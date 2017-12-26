@@ -21,7 +21,7 @@ namespace Meraki.Dashboard
         /// <exception cref="ArgumentNullException">
         /// <paramref name="options"/> cannot be null.
         /// </exception>
-        public MerakiDashboardClient(IOptions<MerakiDashboardClientSettings> options)
+        public MerakiDashboardClient(IOptions<MerakiDashboardClientOptions> options)
             : this(options?.Value)
         {
             // Do nothing
@@ -31,15 +31,15 @@ namespace Meraki.Dashboard
         /// Create a new <see cref="MerakiDashboardClient"/>.
         /// </summary>
         /// <param name="settings">
-        /// The <see cref="MerakiDashboardClientSettings"/> to use. This cannot be null.
+        /// The <see cref="MerakiDashboardClientOptions"/> to use. This cannot be null.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="settings"/> nor <paramref name="settings.Address"/> can be null.
         /// </exception>
         /// <exception cref="ArgumentException">
-        /// The <see cref="MerakiDashboardClientSettings.ApiKey"/> field cannot be null, empty or whitespace.
+        /// The <see cref="MerakiDashboardClientOptions.ApiKey"/> field cannot be null, empty or whitespace.
         /// </exception>
-        public MerakiDashboardClient(MerakiDashboardClientSettings settings)
+        public MerakiDashboardClient(MerakiDashboardClientOptions settings)
             : this(new MerakiHttpApiClient(settings?.ApiKey, settings?.BaseAddress))
         { 
             // Do nothing

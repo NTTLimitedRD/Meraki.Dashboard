@@ -12,20 +12,18 @@ namespace Meraki.Dashboard
     public static class MerakiDashboardClientFactory
     {
         /// <summary>
-        /// Create a <see cref="MerakiDashboardClient"/> based off the given <see cref="MerakiDashboardClientSettings"/> object.
+        /// Create a <see cref="MerakiDashboardClient"/> based off the given <see cref="MerakiDashboardClientOptions"/> object.
         /// </summary>
         /// <param name="configure">
-        /// An optional configuration step on the <see cref="MerakiDashboardClientSettings"/> object being created.
+        /// An optional configuration step on the <see cref="MerakiDashboardClientOptions"/> object being created.
         /// </param>
         /// <returns>
         /// A configured <see cref="MerakiDashboardClient"/> object.
         /// </returns>
-        public static MerakiDashboardClient Create(Action<MerakiDashboardClientSettings> configure = null)
+        public static MerakiDashboardClient Create(Action<MerakiDashboardClientOptions> configure = null)
         {
-            MerakiDashboardClientSettings settings = new MerakiDashboardClientSettings();
-            MerakiDashboardClientSettingsSetup setup = new MerakiDashboardClientSettingsSetup();
+            MerakiDashboardClientOptions settings = new MerakiDashboardClientOptions();
 
-            setup.Configure(settings);
             configure?.Invoke(settings);
 
             return new MerakiDashboardClient(settings);

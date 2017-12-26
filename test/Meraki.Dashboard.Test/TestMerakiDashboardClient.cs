@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -20,7 +22,7 @@ namespace Meraki.Dashboard.Test
             Uri baseAddress = new Uri("http://www.myserver.com");
             const string apiKey = "000111222333444555666777888999000aaabbbbcccdddeee";
 
-            MerakiDashboardClientSettings merakiDashboardClientSettings = new MerakiDashboardClientSettings
+            MerakiDashboardClientOptions merakiDashboardClientSettings = new MerakiDashboardClientOptions
             {
                 BaseAddress = baseAddress,
                 ApiKey = apiKey
@@ -41,7 +43,7 @@ namespace Meraki.Dashboard.Test
 
             MerakiDashboardClientSettingsOptions merakiDashboardClientSettingsOptions = new MerakiDashboardClientSettingsOptions
             {
-                Value = new MerakiDashboardClientSettings
+                Value = new MerakiDashboardClientOptions
                 {
                     BaseAddress = baseAddress,
                     ApiKey = apiKey
@@ -58,13 +60,13 @@ namespace Meraki.Dashboard.Test
         [Fact]
         public void Ctor_Null_MerakiDashboardClientSettings()
         {
-            Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient((MerakiDashboardClientSettings) null));
+            Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient((MerakiDashboardClientOptions) null));
         }
 
         [Fact]
         public void Ctor_MerakiDashboardClientSettings_Null_BaseAddress()
         {
-            MerakiDashboardClientSettings merakiDashboardClientSettings = new MerakiDashboardClientSettings
+            MerakiDashboardClientOptions merakiDashboardClientSettings = new MerakiDashboardClientOptions
             {
                 BaseAddress = null,
                 ApiKey = "apiKey"
@@ -79,7 +81,7 @@ namespace Meraki.Dashboard.Test
         [InlineData(" ")]
         public void Ctor_MerakiDashboardClientSettings_Null_ApiKey(string apiKey)
         {
-            MerakiDashboardClientSettings merakiDashboardClientSettings = new MerakiDashboardClientSettings
+            MerakiDashboardClientOptions merakiDashboardClientSettings = new MerakiDashboardClientOptions
             {
                 BaseAddress = new Uri("http://www.myserver.com"),
                 ApiKey = apiKey
@@ -91,13 +93,26 @@ namespace Meraki.Dashboard.Test
         [Fact]
         public void Ctor_Null_IOptions()
         {
-            Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient((IOptions<MerakiDashboardClientSettings>)null));
+            Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient((IOptions<MerakiDashboardClientOptions>)null));
         }
 
         [Fact]
         public void Ctor_IOptions_Null_Settings()
         {
             Assert.Throws<ArgumentNullException>(() => new MerakiDashboardClient(new MerakiDashboardClientSettingsOptions()));
+        }
+
+        [Fact]
+        public void VirtualMethods()
+        {
+            Type merakiDashboardClientType = typeof(MerakiDashboardClient);
+            string[] excludedMethods = { "GetType" };
+
+            // Find amy non-virtual public methods. This makes mocking difficult or impossible.
+            Assert.Empty(merakiDashboardClientType
+                .GetMethods()
+                .Where(method => !excludedMethods.Contains(method.Name) && !method.IsVirtual)
+                .Select(method => method.Name));
         }
 
         [Fact]

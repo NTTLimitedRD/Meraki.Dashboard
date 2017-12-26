@@ -44,7 +44,7 @@ namespace Meraki.Dashboard.Test
                 Tags = "Tags"
             };
 
-            MerakiDashboardClientSettings merakiDashboardClientSettings = new MerakiDashboardClientSettings
+            MerakiDashboardClientOptions merakiDashboardClientSettings = new MerakiDashboardClientOptions
             {
                 ApiKey = "api key",
                 BaseAddress = new Uri("http://myapi.com")

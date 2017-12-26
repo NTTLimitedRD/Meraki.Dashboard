@@ -3,9 +3,9 @@ using Microsoft.Extensions.Options;
 
 namespace Meraki.Dashboard.Test
 {
-    internal class MerakiDashboardClientSettingsOptions: IOptions<MerakiDashboardClientSettings>
+    internal class MerakiDashboardClientSettingsOptions: IOptions<MerakiDashboardClientOptions>
     {
         /// <summary>The configured TOptions instance.</summary>
-        public MerakiDashboardClientSettings Value { get; set; }
+        public MerakiDashboardClientOptions Value { get; set; }
     }
 }
