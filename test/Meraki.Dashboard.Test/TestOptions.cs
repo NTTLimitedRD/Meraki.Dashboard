@@ -32,7 +32,7 @@ namespace Meraki.Dashboard.Test
 
             IServiceCollection serviceCollection = new ServiceCollection();
             serviceCollection.AddOptions();
-            // Ensure the section mathces the appSettings.json file
+            // Ensure the section matches the appSettings.json file
             serviceCollection.Configure<MerakiDashboardClientOptions>(configuration.GetSection("merakiDashboard"));
             serviceCollection.AddScoped<MerakiDashboardClient>();
 
