@@ -129,7 +129,7 @@ namespace Meraki.Dashboard
         }
 
         /// <summary>
-        /// GET /devices/[serial]/clients
+        /// GET /devices/[serial]/clients.
         /// </summary>
         public virtual async Task<string> GetDeviceClientsAsync(string serial, TimeSpan timespan)
         {
