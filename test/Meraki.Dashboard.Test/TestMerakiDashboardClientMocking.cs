@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Moq;
@@ -33,7 +34,7 @@ namespace Meraki.Dashboard.Test
             Device device = new Device
             {
                 Address = "1600 Pennsylania Ave Washington DC",
-                LanIpAddress = new IPAddress(new byte[] {127, 0, 0, 1}),
+                LanIpAddress = new IPAddress(new byte[] { 127, 0, 0, 1 }),
                 Lattitude = 38.8977,
                 Longitude = 77.0365,
                 Mac = "00:00:00:00:00:00",
@@ -44,6 +45,19 @@ namespace Meraki.Dashboard.Test
                 Tags = "Tags"
             };
 
+            DeviceClient dclient = new DeviceClient
+            {
+                Id = Guid.NewGuid().ToString(),
+                Description = "description",
+                IPAddress = "127.0.0.1",
+                MacAddress = "80:c5:f2:79:be:e1",
+                MDnsName = "Test",
+                DhcpHostName = "Test",
+                SwitchPort = null,
+                User = "test@meraki.com",
+                VLan = "10"
+            };
+
             MerakiDashboardClientOptions merakiDashboardClientSettings = new MerakiDashboardClientOptions
             {
                 ApiKey = "api key",
@@ -52,17 +66,26 @@ namespace Meraki.Dashboard.Test
 
             Mock<MerakiDashboardClient> merakiDashboardlientMock = new Mock<MerakiDashboardClient>(MockBehavior.Strict, merakiDashboardClientSettings);
             merakiDashboardlientMock.Setup(merakiDashboardClient => merakiDashboardClient.GetOrganizationsAsync())
-                                    .Returns(Task.FromResult(new [] {organization}));
+                                    .Returns(Task.FromResult(new[] { organization }));
             merakiDashboardlientMock.Setup(merakiDashboardClient => merakiDashboardClient.GetOrganizationNetworksAsync(organization))
                                     .Returns(Task.FromResult(new[] { network }));
             merakiDashboardlientMock.Setup(merakiDashboardClient => merakiDashboardClient.GetNetworkDevicesAsync(network))
                                     .Returns(Task.FromResult(new[] { device }));
+
+            merakiDashboardlientMock.Setup(merakiDashboardClient => merakiDashboardClient.GetDeviceClientsAsync(device.Serial, new TimeSpan(24, 0, 0)))
+                                    .Returns(Task.FromResult(new[] { dclient }));
+
             // Required by mocking framework
             merakiDashboardlientMock.Protected().Setup("Dispose", true);
 
             using (MerakiDashboardClient merakiDashboardClient = merakiDashboardlientMock.Object)
             {
-                Assert.Equal(new[] {device}, await GetDevicesInAnOrganization(merakiDashboardClient));
+                Assert.Equal(new[] { device }, await GetDevicesInAnOrganization(merakiDashboardClient));
+                var deviceClients = await merakiDashboardClient.GetDeviceClientsAsync(device.Serial, new TimeSpan(24, 0, 0));
+
+                Assert.NotNull(deviceClients);
+                Assert.Single(deviceClients);
+                Assert.Equal(dclient.MacAddress, deviceClients.Single().MacAddress);
             }
             merakiDashboardlientMock.VerifyAll();
         }

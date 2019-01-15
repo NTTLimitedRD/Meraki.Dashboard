@@ -10,7 +10,7 @@ namespace Meraki.Dashboard
     /// <summary>
     /// Wrapper around <see cref="MerakiHttpApiClient"/> for the Meraki Dashboard APIs.
     /// </summary>
-    public class MerakiDashboardClient: IDisposable
+    public class MerakiDashboardClient : IDisposable
     {
         /// <summary>
         /// Create a new <see cref="MerakiDashboardClient"/>.
@@ -41,7 +41,7 @@ namespace Meraki.Dashboard
         /// </exception>
         public MerakiDashboardClient(MerakiDashboardClientOptions settings)
             : this(new MerakiHttpApiClient(settings?.ApiKey, settings?.BaseAddress))
-        { 
+        {
             // Do nothing
         }
 
@@ -117,8 +117,8 @@ namespace Meraki.Dashboard
         /// </returns>
         internal string InterpolateAndEscape(FormattableString formattable) => formattable.ToString(Formatter);
 
-        // Ignore XML documentation warnings from here on. 
-        #pragma warning disable CS1591
+        // Ignore XML documentation warnings from here on.
+#pragma warning disable CS1591
 
         /// <summary>
         /// GET /devices/[serial]/switchPorts
@@ -131,13 +131,13 @@ namespace Meraki.Dashboard
         /// <summary>
         /// GET /devices/[serial]/clients.
         /// </summary>
-        public virtual async Task<string> GetDeviceClientsAsync(string serial, TimeSpan timespan)
+        public virtual async Task<DeviceClient[]> GetDeviceClientsAsync(string serial, TimeSpan timespan)
         {
-            return await Client.GetAsync(InterpolateAndEscape($"v0/devices/{serial}/clients?timespan={(int)timespan.TotalSeconds}"));
+            return await Client.GetAsync<DeviceClient[]>(InterpolateAndEscape($"v0/devices/{serial}/clients?timespan={(int)timespan.TotalSeconds}"));
         }
 
         /// <summary>
-        /// GET /networks/[networkId]/devices/[serial] 
+        /// GET /networks/[networkId]/devices/[serial]
         /// </summary>
         public virtual async Task<Device> GetDeviceAsync(string networkId, string serial)
         {

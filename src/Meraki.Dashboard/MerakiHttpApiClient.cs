@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using MerakiDashboard;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Meraki.Dashboard
 {
@@ -16,7 +14,7 @@ namespace Meraki.Dashboard
     /// <remarks>
     /// Public (instead of internal) for testnig and mocking.
     /// </remarks>
-    public class MerakiHttpApiClient: IDisposable
+    public class MerakiHttpApiClient : IDisposable
     {
         private const string AcceptTypeHttpHeader = "Accept-Type";
         private const string MerakiApiKeyHttpHeader = "X-Cisco-Meraki-API-Key";
@@ -45,7 +43,7 @@ namespace Meraki.Dashboard
         /// This cannot be null, empty or whitespace.
         /// </param>
         /// <param name="baseAddress">
-        /// The optional base URI for web service calls if it differs from the Meraki defalt. 
+        /// The optional base URI for web service calls if it differs from the Meraki defalt.
         /// If provided, this must be an absolute URI.
         /// </param>
         /// <exception cref="ArgumentNullException">
