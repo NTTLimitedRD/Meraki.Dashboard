@@ -179,9 +179,9 @@ namespace Meraki.Dashboard
         /// <summary>
         /// GET /networks/[networkId]/vlans
         /// </summary>
-        public virtual async Task<string> GetNetworkVlans(string id)
+        public virtual async Task<string> GetNetworkVlans(string networkId)
         {
-            return await Client.GetAsync(InterpolateAndEscape($"v0/networks/{id}/vlans"));
+            return await Client.GetAsync(InterpolateAndEscape($"v0/networks/{networkId}/vlans"));
         }
 
         /// <summary>
@@ -190,6 +190,14 @@ namespace Meraki.Dashboard
         public virtual async Task<string> GetNetworkVlans(Network network)
         {
             return await GetNetworkVlans(network.Id);
+        }
+
+        /// <summary>
+        /// GET /networks/[networkId]/vlans/[vlanId]
+        /// </summary>
+        public virtual async Task<string> GetNetworkVlan(string networkId, int vlanId)
+        {
+            return await Client.GetAsync(InterpolateAndEscape($"v0/networks/{networkId}/vlans/{vlanId}"));
         }
 
         /// <summary>
