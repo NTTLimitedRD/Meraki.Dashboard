@@ -20,6 +20,6 @@ build:
 deploy:
   provider: NuGet
   api_key:
-    secure: x6RcBvyLLANc1CyznRWeSmmF0mOju+qCBpvUeVFpmCIuLk4MolWzwHOucI8tYtHJ
+    secure: clSOEJsRrJ7yCDRQ7SGRe9duIUsoGp4JEJxGCUBGFc3JDmodYBm7Hc47kEy5GX18 
   skip_symbols: false
   artifact: /Meraki\.Dashboard\.\d+\.\d+\.\d+\.nupkg/
