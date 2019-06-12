@@ -99,7 +99,10 @@ namespace Meraki.Dashboard
         /// <summary>
         /// The <see cref="MerakiHttpApiClient"/> used to call Meraki APIs.
         /// </summary>
-        internal MerakiHttpApiClient Client { get; }
+        /// <remarks>
+        /// Exposed to allow access to APIs that are not wrapped.
+        /// </remarks>
+        public virtual MerakiHttpApiClient Client { get; }
 
         /// <summary>
         /// Used for escaping URL arguments.
