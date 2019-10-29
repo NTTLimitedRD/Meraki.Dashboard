@@ -20,6 +20,9 @@ namespace Meraki.Dashboard
         [DataMember(Name = "type")]
         public string NetworkType { get; set; }
 
+        [DataMember(Name= "configTemplateId")]
+        public string ConfigTemplateId { get; set; }
+
         [DataMember(Name = "name")]
         public string Name { get; set; }
 

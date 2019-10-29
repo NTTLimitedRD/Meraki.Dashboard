@@ -252,6 +252,11 @@ namespace Meraki.Dashboard
             return await GetOrganizationNetworksAsync(organization.Id);
         }
 
+        public virtual async Task<Network> GetNetworkAsync(string id)
+        {
+            return await Client.GetAsync<Network>(InterpolateAndEscape($"v0/networks/{id}"));
+        }
+
         /// <summary>
         /// GET /organizations/[id]/inventory
         /// </summary>
